@@ -1,0 +1,36 @@
+.left-menu-section{'ng-controller' => 'leftMenuController'}
+  .left-menu-holder
+    %rb-menu.left-menu{ 'config'=>'left_menu_config', 'menu' => 'leftMenu'}
+  .left-menu-info
+    .image
+      .container-for-centering
+        %h4
+          {{flower.name}}
+      %img{'ng-src' => "{{flower.url}}"}
+    .info
+      %h2 Left Menu Information
+      %p
+        The menu directive can also be used as a simple vertical (or horizontal) menu within a page or div.
+        This menu is configured, via its input variables, such that sub menus stay open on an offclick or menu selection.
+      %p
+        In the left menu choose an option under the Organise menu heading to see the effect of changing the data supplied to the directive.
+      %p you can also add items to the menu using the form below.
+      %p
+        Flower Name :
+        %span
+          %input{'ng-model'=>"flowerName"}
+        %span.error
+          {{nameError}}
+      %p
+        Scent :
+        %span
+          %input{'ng-model'=>"flowerScent"}
+        %span.error
+          {{scentError}}
+      %p
+        Color :
+        %input.big-text-box{'ng-model'=>"flowerColors", 'placeholder'=>"comma seprated list"}
+        %span.error
+          {{colorError}}
+      %p
+        %button.button{'ng-click'=>'createFlower()', 'title'=> "Create a new flower with this data"} Create New Flower

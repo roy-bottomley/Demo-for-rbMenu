@@ -1,0 +1,5 @@
+// a service to pass the user names and urls
+// this is injected into the UserService
+rbMenuDemoApp.service('userUrls', [function(){
+    return <%= @user_urls.to_json.html_safe %>;
+}]);

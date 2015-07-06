@@ -1,0 +1,23 @@
+.left-menu{
+
+  $dropdown-anchor-color: #008CBA;
+  $text-color: black;
+  $hover-color: #FFF;
+  $hover-background: #008CBA;
+
+  .rb-nav_divider{ border-bottom: 1px dashed black}
+
+  .rb-nav_menu_dropdown {
+    font-family: Whitney,helvetica,arial,sans-serif;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    background-clip: padding-box;
+
+    li{color: $text-color}
+    li a {color: $dropdown-anchor-color}
+    li a:hover {
+      background: $hover-background;
+      color: $hover-color; }
+  }
+
+}

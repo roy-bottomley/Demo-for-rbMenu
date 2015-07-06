@@ -1,0 +1,66 @@
+.description-section {
+  padding: 9px;
+  border-radius: 3px;
+  border: solid 1px #ddd;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
+.top-menu-section {
+  @extend .description-section;
+  margin-top: 9px;
+  min-height: 300px;
+  .info {
+    padding-right: 18px;
+    width: auto;
+    overflow: hidden;
+  }
+  .editor {
+    min-width: 400px;
+    float: right;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .controls {
+    margin-right: 180px;
+  };
+  .image {
+    max-width: 180px;
+    float: right;
+    vertical-align: top;
+  };
+}
+
+.left-menu-section {
+  padding: 9px 0 9px 18px;
+  background: transparent;
+  position: relative;
+  .left-menu-holder {
+    background: transparent;
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 18px 18px;
+  }
+  .left-menu-info {
+    @extend .description-section;
+    margin-left: 200px;
+    .info {
+      padding-right: 18px;
+      width: auto;
+      overflow: hidden;
+      margin-right: 150px;
+    }
+    .image {
+      width: 150px;
+      height: 100%;
+      float: right;
+      vertical-align: top;
+    };
+    .big-text-box{
+      width: 200px
+    }
+  }
+}

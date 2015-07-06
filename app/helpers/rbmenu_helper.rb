@@ -1,0 +1,2 @@
+module RbmenuHelper
+end

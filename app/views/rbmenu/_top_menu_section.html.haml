@@ -1,0 +1,41 @@
+.top-menu-section
+  .editor
+    %img.image{'ng-src' => "{{currentImageUrl}}"}
+    .controls
+      .container-for-centering
+        %h4 User Editor
+        %p
+          Role
+          %span
+            %select{'ng-model'=>"currentIsBadGuy", 'ng-options'=>"item.value as item.name for item in badGuyOptions"}
+        %p
+          Image
+          %span
+            %select{'ng-model'=>"selectedImage", 'ng-options'=>"file.name for file in imageNameOptions", 'ng-click' => 'currentImageUrl = selectedImage.url '}
+        %p
+          Name
+          %span
+            %input{'ng-model'=>"currentName"}
+        %p
+          %span
+            %button.button{'ng-click'=>'saveUser(false)', 'title'=> "Save User with these changes"} Update
+          %span
+            %button.button{'ng-click'=>'saveUser(true)', 'title'=> "Create a new user with this data"} Create New
+
+
+      .clear
+  .info
+    %h2 Top Menu Information
+    %p
+      The top menu contains menu selection for a list of Users.
+      Use the
+      %b User Editor
+      to observe the effects of changing the data in the list of users.
+      %ul
+        %li Select an item from the main menu.
+        %li Change the name/role/image.
+        %li Click Update or New to change the main menu.
+    %p
+      The menu is responsive, change the window size or click the checkbox below to see the small screen version of the menu
+    %input{'type'=>"checkbox",'ng-model'=>"forceSmallScreen"} Force Small Screen Menu
+    .clear

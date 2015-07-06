@@ -1,0 +1,5 @@
+// a service to pass the flower names and urls
+// this is injected into the FlowerService
+rbMenuDemoApp.service('flowerUrls', [function(){
+    return <%= @flower_urls.to_json.html_safe %>;
+}]);
