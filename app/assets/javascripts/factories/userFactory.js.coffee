@@ -1,7 +1,8 @@
 # a class to hold User data
 @rbMenuDemoApp.factory 'User', [ ->
   class User
-    constructor: (@name, @isBadGuy, images) ->
+    constructor: (name, @isBadGuy, images) ->
+      @name = $.trim(name)
       @image = @name  if !@image?
       @key = @name
 

@@ -2,18 +2,28 @@
 @rbMenuDemoApp.controller('leftMenuController', [ '$scope', 'flowerService', ($scope, flowerService)->
 
   # validate the editor values before saving
+  validInput= (input) ->
+    input? && input.length > 0
+
   $scope.checkInputs= () ->
     $scope.colorError = $scope.nameError = $scope.scentError = null
-    $scope.colorError = 'At least one color must be specified' if !$scope.flowerColors?
-    $scope.nameError = 'A scent must be specified' if !$scope.flowerName?
-    $scope.scentError = 'A name must be specified' if !$scope.flowerScent?
+    $scope.colorError = 'At least one color must be specified' if !validInput($scope.flowerColors)
+    $scope.nameError = 'A name must be specified' if !validInput($scope.flowerName)
+    $scope.scentError = 'A scent must be specified' if !validInput($scope.flowerScent)
     !$scope.colorError? && !$scope.nameError?&& !$scope.scentError?
 
   # tell the flowerService to create a new flower
   $scope.createFlower= () ->
     if $scope.checkInputs()
       colors = $scope.flowerColors.split(',')
-      $scope.nameError = flowerService.addFlower($scope.flowerName,colors, $scope.flowerScent)
+      result = flowerService.addFlower($scope.flowerName,colors, $scope.flowerScent)
+      console.log('$scope.nameError')
+      console.log($scope.nameError)
+      if result.error
+        $scope.nameError  = result.error
+      else
+        $scope.flower = result.flower
+        confirm("Flower saved please check the Left menu to see the changes")
 
   # fetch the menu data from the flowerService into the variable passed into the rbMenu directive
   $scope.leftMenu = {sub_menu: flowerService.menus[flowerService.colorKey], key: 'rootItem'}

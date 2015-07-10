@@ -30,8 +30,11 @@
     $scope.menu_config = {on_left: false, emit_id: $scope.menuId, primary_menu: true}
 
   # validate the editor values before saving
+  validInput= (input) ->
+    input? && input.length > 0
+
   $scope.checkInputs= () ->
-    if !$scope.currentName
+    if !validInput($scope.currentName)
       confirm("Name must be at least 1 character long")
       false
     else if  $scope.currentKey == 'Roy' || $scope.currentName == 'Roy'
@@ -48,7 +51,7 @@
     if  $scope.checkInputs()
       if createNew
         user = userService.addUser($scope.currentName, $scope.currentIsBadGuy, $scope.selectedImage.name)
-        $scope.selectedUser = userService.getClone(user.key)
+        $scope.setUserInEditor(userService.getUser(user.key))
         confirm("User created please check the Main menu to see the changes")
       else
         userService.updateUser($scope.currentKey, $scope.currentName, $scope.currentIsBadGuy, $scope.selectedImage.name)

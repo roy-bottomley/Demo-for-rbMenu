@@ -6,7 +6,12 @@
       .container-for-centering
         %h4
           {{flower.name}}
+      .container-for-centering
+        Scent: {{flower.scent}}
       %img{'ng-src' => "{{flower.url}}"}
+      .container-for-centering
+        %div{'ng-repeat'=>'color in flower.colors'}
+          {{color}}
     .info
       %h2 Left Menu Information
       %p

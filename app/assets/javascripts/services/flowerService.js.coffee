@@ -46,9 +46,13 @@
       # then pass of the work to rbMenuService
       rbMenuService.getMenuItem(key, menuList,newMenu)
 
-    # verify the name is a valid flower name
+    # verify the name is a valid flower name and currently does not exist
     checkName= (name, flowers) ->
-      name? && !flowers[name.capitalizeFirstLetter()]?
+      console.log('checking name')
+      console.log(name)
+      console.log(flowers[ $.trim(name).capitalizeFirstLetter()])
+      console.log(flowers)
+      name? && !flowers[ $.trim(name).capitalizeFirstLetter()]?
 
     # add a flower to the database and the menus
     addFlower: (name,color,scent,  doSort = true) ->
@@ -68,14 +72,16 @@
         @rbMenuService.replaceMenuItem(flower.key, scentMenu, flower.menuItem)
 
         # for each of the flowers colors add the flower to the appropiate color menu
-        for color in flower.colors
-          colorMenu = getMenu(@rbMenuService, color, @menus[@colorKey]).sub_menu
+        for flowerColor in flower.colors
+          colorMenu = getMenu(@rbMenuService, flowerColor, @menus[@colorKey]).sub_menu
           @rbMenuService.replaceMenuItem(flower.key,  colorMenu, flower.menuItem)
 
-        # return null rather than an error message
-        null
+        console.log("added flower")
+        console.log(flower.colors)
+        # return the flower
+        {flower: flower}
       else
-        "Flower name exists"
+        {error: "Flower name exists"}
 
     # get a flower from the database
     getFlower: (key) ->

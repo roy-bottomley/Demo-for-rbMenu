@@ -25,7 +25,7 @@
       @defaultUser =  @users['Thor']
 
     # check for a valid name
-    # just don;t allow duplicates
+    # just don't allow duplicates
     checkName= (name, users) ->
       for key, value of users
         if value.name == name
@@ -45,7 +45,7 @@
 
     # add a user to the database and the menu items
     addUser: (name, isBadGuy, imageName = null) ->
-      # add to the detabase
+      # add to the database
       user = new @User(checkName(name, @users) , isBadGuy, @userUrls[(imageName || name)])
       @users[user.key] = user
 

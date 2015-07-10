@@ -2,14 +2,15 @@
 @rbMenuDemoApp.factory 'Flower', [ ->
   class Flower
     constructor: (name, colors, scent, @url) ->
-      @name = name.capitalizeFirstLetter()
-      @key= "1##{@name}"
-      @scent = scent.capitalizeFirstLetter()
+      @name = $.trim(name).capitalizeFirstLetter()
+      @key= @name
+      sortkey= "1##{@name}"
+      @scent = $.trim(scent).capitalizeFirstLetter()
       @colors = []
       for color in colors
-        @colors.push(color.capitalizeFirstLetter())
+        @colors.push($.trim(color).capitalizeFirstLetter())
 
-      @menuItem =   {text: @name, menu_action: {emit: {flowerKey: @key}} , key: @key, sortKey: @key}
+      @menuItem =   {text: @name, menu_action: {emit: {flowerKey: @key}} , key: @key, sortKey: sortkey}
 
 
 ]
